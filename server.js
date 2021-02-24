@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 
 const users = require("./routes/api/users");
+const products = require("./routes/api/products");
 
 const app = express();
 
@@ -18,10 +19,12 @@ app.use(bodyParser.json());
 // DB Config
 const db = require("./config/keys").mongoURI;
 
+const uri = "mongodb+srv://root:root@cluster0.mgdlf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
 // Connect to MongoDB
 mongoose
   .connect(
-    db,
+    uri,
     { useNewUrlParser: true }
   )
   .then(() => console.log("MongoDB successfully connected"))
@@ -35,6 +38,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+app.use("/api/products", products);
 
 const port = process.env.PORT || 5000;
 

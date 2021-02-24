@@ -11,6 +11,7 @@ const validateLoginInput = require("../../validation/login");
 
 // Load User model
 const User = require("../../models/User");
+const Product =  require("../../models/Product");
 
 // @route POST api/users/register
 // @desc Register user
@@ -105,5 +106,13 @@ router.post("/login", (req, res) => {
     });
   });
 });
+router.get("/products", (req, res) => {
+  Product.find({}).then(function (products) {
+      res.send(products);
+  });
+  return res
+      .status(200)
+});
+
 
 module.exports = router;

@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 class Landing extends Component {
+
+  componentDidMount(){
+    axios
+    .get("/api/products")
+    .then(res => console.log(res))
+    .catch(err =>console.log(err))
+  }
   render() {
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
