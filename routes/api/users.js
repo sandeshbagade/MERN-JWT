@@ -106,13 +106,5 @@ router.post("/login", (req, res) => {
     });
   });
 });
-router.get("/products", (req, res) => {
-  Product.find({}).then(function (products) {
-      res.send(products);
-  });
-  return res
-      .status(200)
-});
-
 
 module.exports = router;

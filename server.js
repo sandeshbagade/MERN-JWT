@@ -19,12 +19,10 @@ app.use(bodyParser.json());
 // DB Config
 const db = require("./config/keys").mongoURI;
 
-const uri = "mongodb+srv://root:root@cluster0.mgdlf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
 // Connect to MongoDB
 mongoose
   .connect(
-    uri,
+    db,
     { useNewUrlParser: true }
   )
   .then(() => console.log("MongoDB successfully connected"))
